@@ -1,0 +1,92 @@
+Nudge Data Model
+A Nudge will have the following fields:
+
+_id: (ObjectId) Unique identifier .
+type: (String) Type of nudge.
+tagged_event: (String) ID of the tagged event or article.
+title: (String) Title of the nudge (max 60 characters).
+image: (String) URL of the uploaded image for the nudge.
+schedule_date: (Date) Date for the nudge.
+timing: (String) Timing for the nudge.
+description: (String) Description of the nudge.
+icon: (String) URL of the icon for the nudge.
+invitation_text: (String) One-line invitation text.
+
+API Endpoints
+Base URL
+/api/v3/app/nudges
+
+1. Create a Nudge
+Method: POST
+Endpoint: /api/v3/app/nudges
+
+Payload:
+{
+  "type": "event",
+  "tagged_event": "123456",
+  "title": "Join our Tech Talk!",
+  "image": "https://example.com/image.jpg",
+  "schedule_date": "2024-12-31",
+  "timing": "10:00-12:00",
+  "description": "A deep dive into cutting-edge technology.",
+  "icon": "https://example.com/icon.png",
+  "invitation_text": "Check out this exciting event!"
+}
+Response:
+{
+  "message": "Nudge created successfully",
+  "nudge_id": "64b5d3a1d2d50a5e8b3d4f12"
+}
+
+2. Get All Nudges
+Method: GET
+Endpoint: /api/v3/app/nudges
+Response:
+{
+  "nudges": [
+    {
+      "_id": "64b5d3a1d2d50a5e8b3d4f12",
+      "type": "event",
+      "title": "Join our Tech Talk!",
+      "image": "https://example.com/image.jpg",
+      "schedule_date": "2024-12-31",
+      "timing": "10:00-12:00",
+      "description": "A deep dive into cutting-edge technology.",
+      "icon": "https://example.com/icon.png",
+      "invitation_text": "Check out this exciting event!"
+    }
+  ]
+}
+3.Get a Specific Nudge
+Method: GET
+Endpoint: /api/v3/app/nudges/:id
+
+{
+  "_id": "64b5d3a1d2d50a5e8b3d4f12",
+  "type": "event",
+  "title": "Join our Tech Talk!",
+  "image": "https://example.com/image.jpg",
+  "schedule_date": "2024-12-31",
+  "timing": "10:00-12:00",
+  "description": "A deep dive into cutting-edge technology.",
+  "icon": "https://example.com/icon.png",
+  "invitation_text": "Check out this exciting event!"
+}
+
+4. Update a Nudge
+Method: PUT
+Endpoint: /api/v3/app/nudges/:id
+Payload: Same as POST.
+Response:
+{
+  "message": "Nudge updated successfully"
+}
+
+5. Delete a Nudge
+Method: DELETE
+Endpoint: /api/v3/app/nudges/:id
+Response:
+
+{
+  "message": "Nudge deleted successfully"
+}
